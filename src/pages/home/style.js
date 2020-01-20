@@ -22,3 +22,11 @@ export const HomeRight = styled.div`
   width: 240px;
   float: right;
 `;
+
+export const SwiperWrapper = styled.div`
+  img {
+    width: 100%;
+    height: 270px;
+    border-radius: 8px;
+  }
+`;

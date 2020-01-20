@@ -3,9 +3,11 @@
 import { combineReducers } from "redux-immutable";
 // as是起别名的意思，意思是reducer起了个别名叫  header: headerReducer
 import { reducer as headerReducer } from "../common/header/store";
+import { reducer as homeReducer } from "../pages/home/store";
 
 const reducer = combineReducers({
-  header: headerReducer
+  header: headerReducer,
+  home: homeReducer
 });
 
 export default reducer;

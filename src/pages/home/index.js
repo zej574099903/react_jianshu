@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-// 引入Topic,List,Recommend,Writer组件
-import Topic from "./components/Topic";
+// 引入Swiper,List,Recommend,Writer组件
+import Swiper from "./components/Swiper";
 import List from "./components/List";
 import Recommend from "./components/Recommend";
 import Writer from "./components/Writer";
@@ -12,12 +12,7 @@ class Home extends Component {
     return (
       <HomeWrapper>
         <HomeLeft>
-          <img
-            className="banner_img"
-            src={require("../../statics/imgs/productTeam.jpg")}
-            alt="图片无法显示"
-          />
-          <Topic></Topic>
+          <Swiper></Swiper>
           <List></List>
         </HomeLeft>
         <HomeRight>

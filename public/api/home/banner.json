@@ -1,0 +1,21 @@
+{
+  "success": true,
+  "data": [
+    {
+      "image": "https://upload.jianshu.io/admin_banners/web_images/4877/2747180bb64b9e07c82df7fbeab44e280bed94d2.png?imageMogr2/auto-orient/strip|imageView2/1/w/1250/h/540",
+      "title": "请坐"
+    },
+    {
+      "image": "http://tiebapic.baidu.com/forum/w%3D580/sign=d2c8fa30cdb44aed594ebeec831d876a/5ebe9ccad1c8a7869dc7b3747009c93d71cf5078.jpg",
+      "title": "素质过硬"
+    },
+    {
+      "image": "http://tiebapic.baidu.com/forum/w%3D580/sign=5333e91fa419ebc4c0787691b226cf79/e9f9d809b3de9c82fb5a2ff57b81800a19d8432a.jpg",
+      "title": "专业团队"
+    },
+    {
+      "image": "https://imgo.shouji.com.cn/simg/20200120/2020012082591868.jpg",
+      "title": "英明"
+    }
+  ]
+}
