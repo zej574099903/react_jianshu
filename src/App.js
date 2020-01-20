@@ -5,6 +5,8 @@ import { Globalstyle } from "./style";
 import { GlobalIconfontStyle } from "./statics/iconfont/iconfont";
 // 引入Provider组件，主要是为子组件和store做一个中间传值的功能
 import { Provider } from "react-redux";
+// 引入路由
+import { BrowserRouter, Route } from "react-router-dom";
 // 引入头部组件
 import Header from "./common/header";
 // 将store引入
@@ -16,7 +18,20 @@ function App() {
       <Globalstyle />
       <GlobalIconfontStyle />
       <Provider store={store}>
-        <Header />
+        <div>
+          <Header />
+          <BrowserRouter>
+            <div>
+              {/* exact--精确匹配 */}
+              <Route path="/" exact render={() => <div>home</div>}></Route>
+              <Route
+                path="/detail"
+                exact
+                render={() => <div>detail</div>}
+              ></Route>
+            </div>
+          </BrowserRouter>
+        </div>
       </Provider>
     </div>
   );
