@@ -15,6 +15,7 @@ class List extends Component {
           return (
             <ListItem key={item.get('id')}>
               <img
+                alt=""
                 className="pic"
                 src={item.get('imageUrl')}
               ></img>
@@ -41,9 +42,5 @@ const mapStateToProps = state => {
   };
 };
 
-// dispatch--调用store的方法，store.dispatch
-const mapDispathToProps = dispatch => {
-  return {};
-};
 
-export default connect(mapStateToProps, mapDispathToProps)(List);
+export default connect(mapStateToProps, null)(List);

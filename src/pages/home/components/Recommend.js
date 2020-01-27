@@ -1,9 +1,30 @@
 import React, { Component } from "react";
+//connet的作用就是与外部的Provide进行连接
+import { connect } from "react-redux";
+//引入样式
+import { RecommendWrapper, RecommendItem } from "../style";
 
 class Recommend extends Component {
   render() {
-    return <div>Recommend</div>;
+    const { list } = this.props;
+    return (
+      <RecommendWrapper>
+        {list.map(item => {
+          return (
+            <RecommendItem key={item.get("id")} imgUrl={item.get("imgUrl")} />
+          );
+        })}
+      </RecommendWrapper>
+    );
   }
 }
 
-export default Recommend;
+// state--store内的state
+const mapStateToProps = state => {
+  return {
+    list: state.getIn(["home", "recomendList"])
+  };
+};
+
+
+export default connect(mapStateToProps, null)(Recommend);
