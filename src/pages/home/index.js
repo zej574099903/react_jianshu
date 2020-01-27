@@ -9,9 +9,12 @@ import { connect } from "react-redux";
 // 将actionCreators全量引入
 import { actionCreators } from "./store";
 // 引入首页样式
-import { HomeWrapper, HomeLeft, HomeRight } from "./style";
+import { HomeWrapper, HomeLeft, HomeRight, BackTop } from "./style";
 
 class Home extends Component {
+  handeleToTop() {
+    window.scrollTo(0, 0);
+  }
   render() {
     return (
       <HomeWrapper>
@@ -23,6 +26,9 @@ class Home extends Component {
           <Recommend></Recommend>
           <Writer></Writer>
         </HomeRight>
+        {this.props.showToTop ? (
+          <BackTop onClick={this.handeleToTop}>顶部</BackTop>
+        ) : null}
       </HomeWrapper>
     );
   }
@@ -30,8 +36,24 @@ class Home extends Component {
     this.props.getBannerImgs();
     this.props.getArticleList();
     this.props.getRecommendList();
+    this.bindEvents();
+  }
+  componentWillUnmount() {
+    window.removeEventListener("scroll", this.props.changeShowToTop);
+  }
+
+  //监听滚动条事件
+  bindEvents() {
+    window.addEventListener("scroll", this.props.changeShowToTop);
   }
 }
+
+// state--store内的state
+const mapStateToProps = state => {
+  return {
+    showToTop: state.getIn(["home", "showToTop"])
+  };
+};
 
 // dispatch--调用store的方法，store.dispatch
 const mapDispathToProps = dispatch => {
@@ -47,8 +69,16 @@ const mapDispathToProps = dispatch => {
     //获取推荐列表
     getRecommendList() {
       dispatch(actionCreators.getRecommendList());
+    },
+    //显示回到顶部
+    changeShowToTop() {
+      if (document.documentElement.scrollTop > 400) {
+        dispatch(actionCreators.changeShowToTop(true));
+      } else {
+        dispatch(actionCreators.changeShowToTop(false));
+      }
     }
   };
 };
 
-export default connect(null, mapDispathToProps)(Home);
+export default connect(mapStateToProps, mapDispathToProps)(Home);

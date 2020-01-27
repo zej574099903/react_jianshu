@@ -7,7 +7,8 @@ import { fromJS } from "immutable";
 const defaultState = fromJS({
   bannerList: [],
   acrticlList: [],
-  recomendList: []
+  recomendList: [],
+  showToTop: false
 });
 
 export default (state = defaultState, action) => {
@@ -26,6 +27,8 @@ export default (state = defaultState, action) => {
       );
     case constants.GET_RECOMMEND:
       return state.set("recomendList", action.data);
+    case constants.CHANGE_SHOWTOTOP:
+      return state.set("showToTop", action.show);
     default:
       return state;
   }

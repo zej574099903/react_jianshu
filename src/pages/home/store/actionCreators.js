@@ -27,6 +27,7 @@ const getRecommend = data => ({
   data: fromJS(data)
 });
 
+
 // 定义异步函数
 // 获取banner图
 export const getBannerImgs = () => {
@@ -76,3 +77,8 @@ export const getRecommendList = () => {
       .catch(() => {});
   };
 };
+//判断是否显示回到顶部
+export const changeShowToTop = (show) =>({
+  type: constants.CHANGE_SHOWTOTOP,
+  show
+})
