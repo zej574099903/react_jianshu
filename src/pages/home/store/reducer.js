@@ -19,6 +19,11 @@ export default (state = defaultState, action) => {
       return state.set("bannerList", action.data);
     case constants.GET_ARTICLE:
       return state.set("acrticlList", action.data);
+    case constants.GET_MORE:
+      return state.set(
+        "acrticlList",
+        state.get("acrticlList").concat(action.data)
+      );
     case constants.GET_RECOMMEND:
       return state.set("recomendList", action.data);
     default:

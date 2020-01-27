@@ -4,32 +4,27 @@ import { connect } from "react-redux";
 // 将actionCreators全量引入
 // import { actionCreators } from "../store";
 //引入样式
-import { ListItem, ListInfo } from "../style";
+import { ListItem, ListInfo, LoadMore } from "../style";
+// 将actionCreators全量引入
+import { actionCreators } from "../store";
 
 class List extends Component {
   render() {
-    const { list } = this.props;
+    const { list, getMoreList } = this.props;
     return (
       <div>
-        {list.map(item => {
+        {list.map((item, index) => {
           return (
-            <ListItem key={item.get('id')}>
-              <img
-                alt=""
-                className="pic"
-                src={item.get('imageUrl')}
-              ></img>
+            <ListItem key={index}>
+              <img alt="" className="pic" src={item.get("imageUrl")}></img>
               <ListInfo>
-                <h3 className="title">
-                  {item.get('title')}
-                </h3>
-                <p className="desc">
-                  {item.get('desc')}
-                </p>
+                <h3 className="title">{item.get("title")}</h3>
+                <p className="desc">{item.get("desc")}</p>
               </ListInfo>
             </ListItem>
           );
         })}
+        <LoadMore onClick={getMoreList}>阅读更多</LoadMore>
       </div>
     );
   }
@@ -42,5 +37,14 @@ const mapStateToProps = state => {
   };
 };
 
+// dispatch--调用store的方法，store.dispatch
+const mapDispathToProps = dispatch => {
+  return {
+    // 获取更多内容
+    getMoreList() {
+      dispatch(actionCreators.getMoreList());
+    }
+  };
+};
 
-export default connect(mapStateToProps, null)(List);
+export default connect(mapStateToProps, mapDispathToProps)(List);

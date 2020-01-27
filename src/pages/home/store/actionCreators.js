@@ -15,6 +15,12 @@ const getArticle = data => ({
   data: fromJS(data)
 });
 
+const getMore = data => ({
+  type: constants.GET_MORE,
+  // 需要将传过去的data转换成immutable格式
+  data: fromJS(data)
+});
+
 const getRecommend = data => ({
   type: constants.GET_RECOMMEND,
   // 需要将传过去的data转换成immutable格式
@@ -42,6 +48,18 @@ export const getArticleList = () => {
       .then(res => {
         const data = res.data.data;
         dispatch(getArticle(data));
+      })
+      .catch(() => {});
+  };
+};
+// 获取更多内容
+export const getMoreList = () => {
+  return dispatch => {
+    axios
+      .get("/api/home/acrticlMore.json")
+      .then(res => {
+        const data = res.data.data;
+        dispatch(getMore(data));
       })
       .catch(() => {});
   };
