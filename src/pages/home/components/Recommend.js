@@ -1,10 +1,10 @@
-import React, { Component } from "react";
+import React, { PureComponent } from "react";
 //connet的作用就是与外部的Provide进行连接
 import { connect } from "react-redux";
 //引入样式
 import { RecommendWrapper, RecommendItem } from "../style";
 
-class Recommend extends Component {
+class Recommend extends PureComponent {
   render() {
     const { list } = this.props;
     return (

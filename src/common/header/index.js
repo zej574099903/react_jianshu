@@ -6,6 +6,8 @@ import { connect } from "react-redux";
 //timeout--动画时长
 //classNames--动画类
 import { CSSTransition } from "react-transition-group";
+// 引入路由
+import { Link } from "react-router-dom";
 // 将actionCreators全量引入
 import { actionCreators } from "./store";
 // 引入头部组件样式
@@ -79,10 +81,12 @@ class Header extends Component {
   }
 
   render() {
-    const { focused, handleInputFocus, handleInputBlur ,list} = this.props;
+    const { focused, handleInputFocus, handleInputBlur, list } = this.props;
     return (
       <HeaderWrapper>
-        <Logo />
+        <Link to="/">
+          <Logo />
+        </Link>
         <Nav>
           <NavItem className="left active">首页</NavItem>
           <NavItem className="left">下载App</NavItem>
@@ -94,7 +98,7 @@ class Header extends Component {
             <CSSTransition in={focused} timeout={200} classNames="slide">
               <NavSearch
                 className={focused ? "focesed" : ""}
-                onFocus={()=>handleInputFocus(list)}
+                onFocus={() => handleInputFocus(list)}
                 onBlur={handleInputBlur}
               ></NavSearch>
             </CSSTransition>
@@ -138,9 +142,9 @@ const mapDispathToProps = dispatch => {
   return {
     // 获取焦点时改变state内的focused的状态
     handleInputFocus(list) {
-      console.log(list)
+      console.log(list);
       // 使用了redux-thunk后可以进行dispatch异步函数
-      if (list.size===0) {
+      if (list.size === 0) {
         dispatch(actionCreators.getList());
       }
       dispatch(actionCreators.searchFocus());

@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { PureComponent } from "react";
 // 引入swiper插件
 import ReactSwiper from "reactjs-swiper";
 //引入样式
@@ -24,7 +24,7 @@ const items = [
     title: "英明"
   }
 ];
-class Swiper extends Component {
+class Swiper extends PureComponent {
   render() {
     return (
       <SwiperWrapper>

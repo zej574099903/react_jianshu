@@ -1,4 +1,5 @@
-import React, { Component } from "react";
+//PureComponent功能和component一样，只是性能有了提升，实现了按需更新组件，必须与immutable.js结合使用
+import React, { PureComponent } from "react";
 // 引入Swiper,List,Recommend,Writer组件
 import Swiper from "./components/Swiper";
 import List from "./components/List";
@@ -11,7 +12,7 @@ import { actionCreators } from "./store";
 // 引入首页样式
 import { HomeWrapper, HomeLeft, HomeRight, BackTop } from "./style";
 
-class Home extends Component {
+class Home extends PureComponent {
   handeleToTop() {
     window.scrollTo(0, 0);
   }
