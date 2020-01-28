@@ -8,6 +8,8 @@ import { DetailWrapper, Header, Content } from "./style";
 
 class Detail extends Component {
   render() {
+    // 获取到路由传过来的id
+    // console.log(this.props.match.params.id)
     return (
       <DetailWrapper>
         <Header>
@@ -21,7 +23,7 @@ class Detail extends Component {
   }
 
   componentDidMount() {
-    this.props.getDetails();
+    this.props.getDetails(this.props.match.params.id);
   }
 }
 
@@ -37,8 +39,8 @@ const mapStateToProps = state => {
 const mapDispathToProps = dispatch => {
   return {
     // 获取详情内容
-    getDetails() {
-      dispatch(actionCreators.getDetails());
+    getDetails(id) {
+      dispatch(actionCreators.getDetails(id));
     }
   };
 };

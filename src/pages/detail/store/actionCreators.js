@@ -12,10 +12,10 @@ const getInfo = (title,content) => ({
 
 // 定义异步函数
 // 获取banner图
-export const getDetails = () => {
+export const getDetails = (id) => {
   return dispatch => {
     axios
-      .get("/api/detail/details.json")
+      .get("/api/detail/details.json?id="+id)
       .then(res => {
         const data = res.data.data;
         dispatch(getInfo(data.title,data.content));

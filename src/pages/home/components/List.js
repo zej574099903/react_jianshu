@@ -17,7 +17,8 @@ class List extends PureComponent {
       <div>
         {list.map((item, index) => {
           return (
-            <Link key={index} to="/detail">
+            // 动态路由传参数
+            <Link key={index} to={'/detail/'+item.get('id')}>
               <ListItem>
                 <img alt="" className="pic" src={item.get("imageUrl")}></img>
                 <ListInfo>
