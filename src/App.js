@@ -9,10 +9,12 @@ import { Provider } from "react-redux";
 import { BrowserRouter, Route } from "react-router-dom";
 // 引入头部组件
 import Header from "./common/header";
+//引入Login组件
+import Login from "./pages/login";
 // 引入Home组件
 import Home from "./pages/home";
 //引入Detail组件
-import Detail from "./pages/detail";
+import Detail from "./pages/detail/loadable";
 // 将store引入
 import store from "./store";
 
@@ -27,6 +29,7 @@ function App() {
             <Header />
             {/* exact--精确匹配 */}
             <Route path="/" exact component={Home}></Route>
+            <Route path="/login" exact component={Login}></Route>
             <Route path="/detail/:id" exact component={Detail}></Route>
           </div>
         </BrowserRouter>

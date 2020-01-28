@@ -1,23 +1,24 @@
-import React, { Component } from "react";
+import React, { PureComponent } from "react";
 //connet的作用就是与外部的Provide进行连接
 import { connect } from "react-redux";
+//引入withRouter
+import { withRouter } from "react-router-dom";
 // 将actionCreators全量引入
 import { actionCreators } from "./store";
 // 引入样式
 import { DetailWrapper, Header, Content } from "./style";
 
-class Detail extends Component {
+class Detail extends PureComponent {
   render() {
     // 获取到路由传过来的id
     // console.log(this.props.match.params.id)
     return (
       <DetailWrapper>
-        <Header>
-          {this.props.title}
-        </Header>
+        <Header>{this.props.title}</Header>
         {/*dangerouslySetInnerHTML--原格式输出  */}
-        <Content dangerouslySetInnerHTML={{__html:this.props.content}}>
-        </Content>
+        <Content
+          dangerouslySetInnerHTML={{ __html: this.props.content }}
+        ></Content>
       </DetailWrapper>
     );
   }
@@ -31,7 +32,7 @@ class Detail extends Component {
 const mapStateToProps = state => {
   return {
     title: state.getIn(["detail", "title"]),
-    content: state.getIn(["detail", "content"]),
+    content: state.getIn(["detail", "content"])
   };
 };
 
@@ -45,4 +46,4 @@ const mapDispathToProps = dispatch => {
   };
 };
 
-export default connect(mapStateToProps, mapDispathToProps)(Detail);
+export default connect(mapStateToProps, mapDispathToProps)(withRouter(Detail));
